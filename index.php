@@ -40,9 +40,9 @@
               <img class="img-reponsive" src="img/'.$key->Imagen.'">
               <div class="form-group tex-editar">
                 <label for="comment">Descripci&oacute;n:</label>
-                <textarea bane="desctext" class="form-control" rows="5" id="descripcion">'.$key->Desc.'</textarea>
+                <textarea name="desctext'.$key->ID.'" class="form-control" rows="5" id="descripcion">'.$key->Desc.'</textarea>
                 <button id="guardar" type="submit" class="btn btn-primary btn-lg" >Guardar</button>
-                <input type="hidden" id="id" name="id" value="'.$key->ID.'">
+                <input type="hidden" id="id" name="id'.$key->ID.'" value="'.$key->ID.'">
               </div>
             </div>
           </form>
