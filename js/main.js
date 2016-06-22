@@ -1,12 +1,13 @@
 $(function() {
-  $("#guardarDescripcion").submit(function(e) {
-
+  $("form").submit(function(e) {
+    var form = $(this);
+      var id = form.attr('id');
       var url = "guardarjson.php"; // the script where you handle the form input.
 
       $.ajax({
              type: "POST",
              url: url,
-             data: $("#guardarDescripcion").serialize(), // serializes the form's elements.
+             data: $("#"+id).serialize(), // serializes the form's elements.
              success: function(data)
              {
                  console.log(data); // show response from the php script.

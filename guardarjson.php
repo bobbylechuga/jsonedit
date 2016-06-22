@@ -1,4 +1,3 @@
 <?php
-  echo $_POST['id'];
-  print_r($_POST);
+  echo $_POST['id']." / ". $_POST['desctext'];
 ?>
