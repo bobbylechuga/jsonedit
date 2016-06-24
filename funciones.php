@@ -1,5 +1,6 @@
 <?php
   function leerDirectorio() {
+    /*
     $directorio = opendir("img");
     $cont = 0;
     while ($archivo = readdir($directorio))  {
@@ -10,8 +11,20 @@
           $dirArray[] = array ("ID" => $cont, "Imagen" => utf8_encode($archivo), "Desc" => "");
         }
 
+    }*/
+    $directorio = scandir("img/");
+    $dirArray = array();
+    sort($directorio, SORT_NUMERIC);
+    $cont = 0;
+    foreach ($directorio as $archivo) {
+      if ($archivo == "." || $archivo == "..") {
+      }else {
+        $dirArray[] = array ("ID" => $cont, "Imagen" => utf8_encode($archivo), "Desc" => "");
+        $cont++;
+      }
     }
     $jsonArray = json_encode($dirArray);
+    //print_r($jsonArray);
     return $jsonArray;
   }
   function guardarJson() {

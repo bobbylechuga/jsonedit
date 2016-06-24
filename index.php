@@ -2,9 +2,8 @@
   include('funciones.php');
   if (!file_exists('alexis100.json')) {
     guardarJson();
-  }else {
-    $ArchivoJson = json_decode(file_get_contents('alexis100.json'));
   }
+  $ArchivoJson = json_decode(file_get_contents('alexis100.json'));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,13 +32,14 @@
 
       <?php
       $html = "";
+        $cont = 1;
         foreach ($ArchivoJson as $key) {
           $html .= '
           <form id="guardarDescripcion'.$key->ID.'">
             <div class="row contenido">
-              <img class="img-reponsive" src="img/'.$key->Imagen.'">
+              <img class="img-responsive" src="img/'.$key->Imagen.'">
               <div class="form-group tex-editar">
-                <label for="comment">Descripci&oacute;n:</label>
+                <label for="comment">'.$cont.' - '.$key->Imagen.' Descripci&oacute;n:</label>
                 <textarea name="desctext" class="form-control" rows="5" id="descripcion">'.$key->Desc.'</textarea>
                 <button id="guardar" type="submit" class="btn btn-primary btn-lg" >Guardar</button>
                 <input type="hidden" id="id" name="id" value="'.$key->ID.'">
@@ -47,6 +47,7 @@
             </div>
           </form>
           ';
+          $cont++;
         }
         echo $html;
       ?>
